@@ -3,6 +3,11 @@ variable "project_name"{
     default = "Expense"
 }
 
+variable "environment"{
+    type = string
+    default = "dev"
+}
+
 variable "common_tags"{
     type = map
     default = {
