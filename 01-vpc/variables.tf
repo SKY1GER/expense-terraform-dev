@@ -1,6 +1,6 @@
 variable "project_name"{
     type = string
-    default = "Expense"
+    default = "expense"
 }
 
 variable "environment"{

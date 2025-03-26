@@ -1,0 +1,49 @@
+- name: SG rules
+  sg:
+  - expense-dev-db
+  - expense-dev-backend
+  - expense-dev-frontend
+  - expense-dev-bastion
+  - expense-dev-ansible
+  db:
+  - name: db_backend
+    desc: db accepting backend connections from backend
+    source: backend
+    port: 3306
+  - name: db_bastion
+    desc: db accepting bastion connections from backend
+    source: bastion
+    port: 3306
+  backend:
+  - name: backend_frontend
+    desc: backend accepting connections from frontend
+    source: frontend
+    port: 8080
+  - name: backend_bastion
+    desc: backend accepting connections from bastion
+    source: frontend
+    port: 22
+  - name: backend_ansible
+    desc: backend accepting connections from ansible
+    source: source
+    port: 22
+  frontend:
+    - name: frontend_public
+      desc: frontend accepting connections from public
+      source: public
+      port: 80
+    - name: frontend_bastion
+      desc: frontend accepting connections from public
+      source: public
+      port: 80
+    - name: frontend_ansible
+      desc: frontend accepting connections from ansible
+      source: ansible
+      port: 22
+  bastion:
+    - name: bastion_public
+      desc: bastion accepting connections from public
+      source: public #your home ip adress
+      port: 22
+      
+  
